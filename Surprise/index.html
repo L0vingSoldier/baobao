@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Skill.check</title>
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        background-color: grey;
+    }
+</style>
+</head>
+
+<body>
+
+    <h1>Money: <span id="money">0</span></h1>
+
+    
+<button id="clicker"
+    style="position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 30px; padding: 15px 30px;
+    background-color: rgb(249, 244, 244); color: rgb(0, 0, 0);">
+    Click me!
+</button>
+
+<button id="autoClicker"
+    style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 18px; padding: 8px 15px;
+    background-color: rgb(200, 200, 200); color: rgb(0, 0, 0);">
+    Buy Auto Clicker (Cost: 10)
+</button>
+
+<button id="clickPower"
+    style="position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 18px; padding: 8px 15px;
+    background-color: rgb(200, 200, 200); color: rgb(0, 0, 0);">
+    Buy Click Power (Cost: 50)
+</button>
+
+<button id="gambler"
+    style="position: absolute; top: 61%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 18px; padding: 8px 15px;
+    background-color: rgb(200, 200, 200); color: rgb(0, 0, 0);">
+    Gambler (Cost: 100)
+</button>
+<button id="reset"
+    style="position: absolute; top: 74%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 18px; padding: 8px 15px;
+    background-color: rgb(200, 200, 200); color: rgb(0, 0, 0);">
+    Rebirth (Cost: 1000)
+</button>
+<button id="Win"
+    style="position: absolute; top: 87%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 18px; padding: 8px 15px;
+    background-color: rgb(200, 200, 200); color: rgb(0, 0, 0);">
+    Win (Cost: 50000)
+</button>
+
+
+
+    
+    
+    
+    <script>
+
+let gambler = document.getElementById("gambler");
+let gamblerActive = false;
+
+let rebirthMultiplier = 1;
+
+let money = 0;
+
+let clicker = document.getElementById("clicker");
+
+let moneyDisplay = document.getElementById("money");
+
+let clickPower = 1;
+
+clicker.onclick = function() {
+
+    if (gamblerActive && Math.random() < 0.5) {
+
+        money += clickPower * 2 * rebirthMultiplier;
+
+    } else {
+
+        money += clickPower * rebirthMultiplier;
+
+    }
+
+    moneyDisplay.textContent = money;
+
+};
+gambler.onclick = function() {
+
+    if (money >= 100 && gamblerActive == false) {
+
+        money -= 100;
+
+        gamblerActive = true;
+
+        gambler.textContent = "Gambler Purchased";
+
+        moneyDisplay.textContent = money;
+
+    }
+
+};
+
+let autoClickerCost = 10;
+
+let autoClicker = document.getElementById("autoClicker");
+
+autoClicker.onclick = function() {
+
+    if (money >= autoClickerCost) {
+
+        money -= autoClickerCost;
+
+        autoClickerCost *= 2;
+
+        autoClicker.textContent = "Buy Auto Clicker (Cost: " + autoClickerCost + ")";
+
+        moneyDisplay.textContent = money;
+
+        setInterval(function() {
+
+            money += clickPower * rebirthMultiplier;
+
+            moneyDisplay.textContent = money;
+
+        }, 1000);
+
+    }
+
+};
+
+
+let clickPowerCost = 50;
+
+let clickPowerButton = document.getElementById("clickPower");
+
+clickPowerButton.onclick = function() {
+
+    if (money >= clickPowerCost) {
+
+        money -= clickPowerCost;
+
+        clickPower += 1 * rebirthMultiplier;
+
+        clickPowerCost *= 2;
+
+        clickPowerButton.textContent = "Buy Click Power (Cost: " + clickPowerCost + ")";
+
+        moneyDisplay.textContent = money;
+
+    }
+
+};
+
+
+let resetButton = document.getElementById("reset");
+
+resetButton.onclick = function() {
+    if (confirm("Are you sure you want to rebirth? This will reset your progress but increase your click power multiplier.")) {
+        if (money >= 1000) {
+            rebirthMultiplier += 1;
+            alert("You have rebirthed! Your click power multiplier is now " + rebirthMultiplier + ".");
+            money = 0;
+            clickPower = 1;
+            autoClickerCost = 10;
+            clickPowerCost = 50;
+            gamblerActive = false;
+            moneyDisplay.textContent = money;
+            clickPowerButton.textContent = "Buy Click Power (Cost: " + clickPowerCost + ")";
+            autoClicker.textContent = "Buy Auto Clicker (Cost: " + autoClickerCost + ")";
+            gambler.textContent = "Buy Gambler (Cost: 100)";
+        } else {
+            alert("You need at least 1000 money to rebirth.");
+        }
+    }
+};
+
+let winButton = document.getElementById("Win");
+
+winButton.onclick = function() {
+    if (money >= 50000) {
+        window.location.href = "Login_page.html";
+    }
+}
+    </script>
+</body>
+</html>
+
