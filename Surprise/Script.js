@@ -38,9 +38,7 @@ if (puzzleButton) {
         } else if (username === "Blabbit_Pookie-Dookie-Snuggle-Muffin") {
             window.location.replace("Verification_3.html");
         } else if (username === "I_love_you") {
-            window.location.replace("Hompage")
-        } else if (username === "wrest") {
-            
+            window.location.replace("Homepage.html")            
         } else {
             window.location.replace("index.html")
         }
