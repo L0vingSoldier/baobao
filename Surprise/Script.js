@@ -27,7 +27,7 @@ if (Pin) {
 
 
 
-let verifyButton = document.getElementById("puzzleButton");
+let puzzleButton = document.getElementById("puzzleButton");
 
 if (puzzleButton) {
     puzzleButton.onclick = function() {
