@@ -40,7 +40,7 @@ if (puzzleButton) {
         } else if (username === "I_love_you") {
             window.location.replace("Homepage.html")            
         } else {
-            window.location.replace("index.html")
+            window.location.replace("Start.html")
         }
     }
 }
