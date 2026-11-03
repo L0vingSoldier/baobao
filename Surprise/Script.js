@@ -27,10 +27,10 @@ if (Pin) {
 
 
 
-let verifyButton = document.getElementById("verifyButton");
+let verifyButton = document.getElementById("puzzleButton");
 
-if (verifyButton) {
-    verifyButton.onclick = function() {
+if (puzzleButton) {
+    puzzleButton.onclick = function() {
 
         let username = document.getElementById("username").value;
         if (username.toLowerCase() === "potatos" || username.toLowerCase() === "potato") {
