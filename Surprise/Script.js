@@ -5,7 +5,7 @@ if (button) {
     let password = document.getElementById("password").value.toLowerCase();
     let username = document.getElementById("username").value;
 
-    if (username === "Agent_B" && password === "but_potatos_are_delicious") {
+    if (username === "Agent_B" && password === "but_potatoes_are_delicious") {
         window.location.href = "Verification_1.html";
     } else {
         alert("Incorrect username or password. Please try again.");
@@ -33,7 +33,7 @@ if (puzzleButton) {
     puzzleButton.onclick = function() {
 
         let username = document.getElementById("username").value;
-        if (username.toLowerCase() === "potatos" || username.toLowerCase() === "potato") {
+        if (username.toLowerCase() === "potatoes" || username.toLowerCase() === "potato") {
             window.location.replace("Verification_2.html");
         } else if (username === "Blabbit_Pookie-Dookie-Snuggle-Muffin") {
             window.location.replace("Verification_3.html");
